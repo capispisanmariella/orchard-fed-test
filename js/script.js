@@ -7,6 +7,28 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Modal functionality
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modal-img');
+    const closeBtn = document.querySelector('.close');
+
+    document.querySelectorAll('.modal-image').forEach(img => {
+        img.addEventListener('click', function() {
+            modal.style.display = 'flex';
+            modalImg.src = this.src;
+        });
+    });
+    
+    closeBtn.onclick = function() {
+        modal.style.display = 'none';
+    }
+    
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+
     // Add some interactivity/animation
     document.querySelectorAll('.read-more').forEach(link => {
         link.addEventListener('mouseover', function() {

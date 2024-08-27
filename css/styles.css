@@ -218,3 +218,50 @@ a.read-more:hover {
         grid-template-columns: 1fr;
     }
 }
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+    /* Flexbox for centering */
+    display: none; /* This will be changed to 'flex' when the modal is shown */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    /* Remove margin */
+    margin: 0;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+}
+
+.modal-image {
+    cursor: pointer;
+}
