@@ -1,0 +1,236 @@
+// Font declarations
+@mixin font-face($family, $src, $weight: normal, $style: normal) {
+    @font-face {
+      font-family: $family;
+      src: url($src) format('truetype');
+      font-weight: $weight;
+      font-style: $style;
+    }
+  }
+  
+  @include font-face('OpenSans', '../assets/OpenSans/OpenSans-Regular.ttf');
+  @include font-face('OpenSans-Light', '../assets/OpenSans/OpenSans-Light.ttf');
+  @include font-face('OpenSans_Condensed_Light', '../assets/OpenSans_Condensed/OpenSans_Condensed-Light.ttf');
+  @include font-face('OpenSans', '../assets/OpenSans/OpenSans-Bold.ttf', bold);
+  @include font-face('OpenSans_SemiCondensed', '../assets/OpenSans_SemiCondensed/OpenSans_SemiCondensed-Regular.ttf');
+  @include font-face('OpenSans_SemiCondensed', '../assets/OpenSans_SemiCondensed/OpenSans_SemiCondensed-Bold.ttf', bold);
+  
+  // Variables
+  $primary-bg-color: #0E1414;
+  $primary-text-color: #ffffff;
+  $secondary-text-color: #d2d2d2;
+  $accent-color: #a50000;
+  $border-color: #CF1430;
+  
+  body {
+    font-family: 'OpenSans';
+    margin: 0;
+    padding: 0;
+    background-color: $primary-bg-color;
+    color: $primary-text-color;
+  }
+  
+  main {
+    max-width: 1200px;
+    margin: 165px auto 0;
+    padding: 20px;
+  }
+  
+  h2 {
+    font-family: 'OpenSans-SemiCondensed';
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .answer-needs {
+    margin-bottom: 40px;
+    display: flex;
+    gap: 23px;
+  
+    .images {
+      flex: 0 0 66%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 23px;
+  
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+  
+        &:first-child {
+          grid-column: 1 / 2;
+          grid-row: 1 / 3;
+        }
+      }
+    }
+  
+    h2 {
+      font-family: 'OpenSans-Light';
+      font-size: 26px;
+      text-transform: uppercase;
+      margin: 0 0 24px;
+      border-bottom: 1px solid $primary-text-color;
+      padding-bottom: 13px;
+      font-weight: 300;
+      color: $secondary-text-color;
+    }
+  
+    p {
+      font-family: 'OpenSans-Light';
+      font-size: 18px;
+      line-height: 1.7;
+      margin: 14px 0 20px;
+      color: #bababa;
+    }
+  
+    h3 {
+      font-family: 'OpenSans';
+      color: $accent-color;
+      font-size: 16px;
+      text-transform: uppercase;
+      margin: 45px 0 10px;
+    }
+  }
+  
+  .beMindful-text {
+    font-family: 'OpenSans' !important;
+    color: $primary-text-color !important;
+  }
+  
+  .latest-from-aeg {
+    margin: 228px 0 170px;
+  
+    h2 {
+      font-family: 'OpenSans-Light';
+      font-size: 43px;
+      font-weight: 300;
+      text-transform: uppercase;
+      margin-bottom: 60px;
+      text-align: center;
+      color: $primary-text-color;
+    }
+  
+    .articles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 23px;
+    }
+  
+    img {
+      width: 100%;
+      object-fit: cover;
+      border-bottom: 4px solid $border-color;
+    }
+  
+    h3 {
+      font-family: 'OpenSans';
+      font-size: 18px;
+      color: $primary-text-color;
+      font-weight: 500;
+    }
+  
+    p {
+      font-family: 'OpenSans-Light';
+      font-size: 16px;
+      line-height: 1.7;
+      color: #929292;
+    }
+  
+    .read-more {
+      font-family: 'OpenSans';
+      font-size: 16px;
+      text-transform: uppercase;
+      color: $primary-text-color;
+      text-decoration: none;
+      display: inline-block;
+      position: relative;
+      margin-top: 10px;
+      padding-bottom: 5px;
+  
+      &:hover {
+        text-decoration: none !important;
+      }
+  
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+        height: 1px;
+        background-color: #ff0000;
+      }
+    }
+  }
+  
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+  
+    &-content {
+      display: block;
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+      margin: 0;
+    }
+  
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+      cursor: pointer;
+  
+      &:hover,
+      &:focus {
+        color: #bbb;
+        text-decoration: none;
+      }
+    }
+  }
+  
+  .modal-image {
+    cursor: pointer;
+  }
+  
+  @media (max-width: 768px) {
+    .answer-needs {
+      flex-direction: column;
+  
+      .images,
+      .text {
+        flex: 0 0 100%;
+      }
+    }
+  
+    .latest-from-aeg .articles {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .answer-needs .images {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+  
+      img:first-child {
+        grid-column: 1;
+        grid-row: 1;
+      }
+    }
+  }
